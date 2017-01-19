@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>EY - Experience Lab</title>
+      <!-- Global stylesheets -->
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+      <link href="css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+      <link href="css/core.css" rel="stylesheet" type="text/css">
+      <link href="css/components.css" rel="stylesheet" type="text/css">
+      <link href="css/colors.css" rel="stylesheet" type="text/css">
+      <!-- /global stylesheets -->
+      <!-- Core JS files -->
+      <script type="text/javascript" src="js/plugins/loaders/pace.min.js"></script>
+      <script type="text/javascript" src="js/core/libraries/jquery.min.js"></script>
+      <script type="text/javascript" src="js/core/libraries/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/plugins/loaders/blockui.min.js"></script>
+      <!-- /core JS files -->
+      <!-- Theme JS files -->
+      <script type="text/javascript" src="js/plugins/visualization/d3/d3.min.js"></script>
+      <script type="text/javascript" src="js/plugins/visualization/d3/d3_tooltip.js"></script>
+      <script type="text/javascript" src="js/plugins/forms/styling/switchery.min.js"></script>
+      <script type="text/javascript" src="js/plugins/forms/styling/uniform.min.js"></script>
+      <script type="text/javascript" src="js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+      <script type="text/javascript" src="js/plugins/ui/moment/moment.min.js"></script>
+      <script type="text/javascript" src="js/plugins/pickers/daterangepicker.js"></script>
+      <script type="text/javascript" src="js/core/app.js"></script>
+      <link href="css/style.css" rel="stylesheet" type="text/css">
+      <!-- /theme JS files -->
+      <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+   </head>
+   <script>
+      $(function() { 
+      
+      if($("#te").val()=="")
+      {
+      $("#BUTTON1").prop('disabled', true);
+      $("#BUTTON2").prop('disabled', true);
+      }
+      
+      
+      $("#te").on('keyup',function() {
+       $("#BUTTON1").prop('disabled', false);
+      
+      })
+      
+      
+       var socket = io.connect("/");
+      console.log(socket)
+      socket.on('connection', function(){alert("Connected")});
+      
+      socket.on('ADRESSE', function(message) {
+      
+      
+      
+      
+      $("#adre").text(message.ad)
+      $("#BUTTON2").prop('disabled', false);
+      $("#adre_a").removeClass("border-danger-800")
+      $("#adre_a").removeClass("text-danger-800")
+      
+      $("#adre_a").addClass("border-success")
+      $("#adre_a").addClass("text-success")
+      
+       $("#adre_i").removeClass("icon-cross2")
+      $("#adre_i").addClass("icon-checkmark3")
+      
+      
+          })
+      
+      
+      	socket.on('E0', function(message) {
+      var info=message[0]
+      
+      
+      $("#M1").text(info.address)
+      $("#M2").text(info.blockNumber)
+      $("#M3").text(info.args.description)
+      $("#M4").text("to be done")			
+      
+      $("#M1").removeClass("text-muted")
+      $("#M2").removeClass("text-muted")
+      $("#M3").removeClass("text-muted")
+      $("#M4").removeClass("text-muted")
+      
+      $("#e0").text(JSON.stringify(message, undefined, 4));
+      
+      
+          })
+      
+      	
+      socket.on('E1', function(message) {
+            $("#e1").text(JSON.stringify(message, undefined, 4));
+          })
+       
+       socket.on('E2', function(message) {
+            $("#e2").text(JSON.stringify(message, undefined, 4));
+          })
+       
+        socket.on('E3', function(message) {
+      console.log(message)
+            $("#e3").text(JSON.stringify(message, undefined, 4));
+			info=message
+			thead="<thead class='text-center'><tr><th class='text-center'>Details</th><th class='text-center'>Block number</th><th class='text-center'>Time stamp</th></tr></thead><tbody>"
+			tbody =""
+			console.log(info.length)
+			for(var i=0; i<info.length; i++) 
+			
+				{ tbody=tbody+"<tr class='spacer'> "+
+									"<td style='width:50%'>"+
+									'<div class="media-left media-middle">'+
+									'<a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs">'+
+									'<span class="letter-icon">S</span>'+
+									'</a>'+
+									'</div>'+
+									'<div class="media-body">'+
+									'<div class="media-heading">'+
+									'<a href="#" class="letter-icon-title">'+info[i].args.change+'</a>'+
+									'</div>'+
+									'<div class="text-muted text-size-small"><i class="icon-checkmark3 text-size-mini position-left"></i>'+info[i].event+'</div>'+
+									'</div>'+
+									"</td>"+
+									"<td>"+
+									'<span class="text-muted text-size-small">'+info[i].blockNumber+'</span>'+
+									"</td>"+
+									"<td>"+
+									'<span class="text-muted text-size-small">06:28 pm</span>'+
+									"</td>"+							
+									+"</tr>" }
+									
+			tbody=thead+tbody+"</tbody>"
+			$("#tab1").html(tbody)
+			
+			console.log(tbody)
+			
+          })
+       
+       
+         socket.on('E4', function(message) {
+            $("#e4").text(JSON.stringify(message, undefined, 4));
+          })
+       
+          socket.on('E5', function(message) {
+            $("#e5").text(JSON.stringify(message, undefined, 4));
+          })                   
+      
+          socket.on('E6', function(message) {
+            $("#e6").text(JSON.stringify(message, undefined, 4));
+          })      
+      launch=function(){
+      
+          var ee = $("#te").val()
+          console.log(ee)
+           socket.emit('MOTOR_ID', ee);
+       }
+      launch2=function(){
+      
+      
+           socket.emit('SOS',"OK");
+       }
+      
+      });
+       
+   </script>
+   <body class="pace-done sidebar-xs bgimg">
+      <!-- Main navbar -->
+      <div class="navbar navbar-inverse">
+         <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="images/Logo_Lab_EY.png" alt=""></a>
+            <ul class="nav navbar-nav visible-xs-block">
+               <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+               <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+            </ul>
+         </div>
+         <div class="navbar-collapse collapse" id="navbar-mobile">
+            <ul class="nav navbar-nav">
+               <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+            </ul>
+         </div>
+      </div>
+      <!-- Page container -->
+      <div class="page-container">
+         <!-- Page content -->
+         <div class="page-content">
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-main">
+               <div class="sidebar-content">
+                  <!-- User menu -->
+                  <!-- /user menu -->
+                  <!-- Main navigation -->
+                  <div class="sidebar-category sidebar-category-visible">
+                     <div class="category-content no-padding">
+                        <ul class="navigation navigation-main navigation-accordion">
+                           <!-- Main -->
+                           <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Home"></i></li>
+                           <li class="active"><a href="index.html"><i class="icon-git-pull-request"></i> <span>Blockchain demo</span></a></li>
+                           <li ><a href="provider.html"><i class="icon-arrow-right16"></i> <span>Others</span></a></li>
+                           <!-- /page kits -->
+                        </ul>
+                     </div>
+                  </div>
+                  <!-- /main navigation -->
+               </div>
+            </div>
+            <!-- /main sidebar -->
+            <!-- Main content -->
+            <div class="content-wrapper">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h6 class="panel-title">Motor search engine</h6>
+                           <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                        </div>
+                        <div class="panel-body">
+                           <div class="form-group has-feedback has-feedback-left">
+                              <div class="row">
+                                 <div class="col-md-7">
+                                    <p class="mini_title">Motor identification </p>
+                                    <p class=""><a href="#" class="btn bg-pink-400 btn-rounded btn-icon btn-xs">
+                                       <span class="letter-icon">1</span>
+                                       </a> Enter motor ID  
+                                    </p>
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                          <div class="input-group">
+                                             <span class="input-group-addon bg-slate-700"><i class="icon-lock2"></i></span>
+                                             <input type="text" id="te" class="form-control bg-slate" placeholder="Motor ID">
+                                             <span class="input-group-addon bg-slate-700"><i class="icon-help"></i></span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <p class=""><a href="#" class="btn bg-pink-400 btn-rounded btn-icon btn-xs">
+                                       <span class="letter-icon">2</span>
+                                       </a> Check identification 
+                                    </p>
+                                    <div class="row">
+                                       <div class="col-md-4">				
+                                          <button type="submit" id="BUTTON1" onclick="launch()" class="btn btn-primary">Launch identification on web3 <i class="icon-arrow-right14 position-right"></i></button>
+                                       </div>
+                                       <div class="col-md-8">
+                                          <div class="media-left media-middle">
+                                             <a id="adre_a" href="#" class="btn border-danger-800 text-danger-800 btn-flat btn-rounded btn-icon btn-xs"><i id="adre_i" class="icon-cross2"></i></a>
+                                          </div>
+                                          <div class="media-body">
+                                             <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Motor address</a>
+                                             <div class="text-size-small" ><span class="status-mark border-blue position-left"></span> <span id="adre">Waiting identification</span></div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <p class=""><a href="#" class="btn bg-pink-400 btn-rounded btn-icon btn-xs">
+                                       <span class="letter-icon">3</span>
+                                       </a> Get back all details on this motor 
+                                    </p>
+                                    <div class="input-group">
+                                       <div class="row">
+                                          <div class="col-md-4">	
+                                             <button type="submit" id="BUTTON2" onclick="launch2()" class="btn btn-primary">Retrieve past transactions <i class="icon-arrow-right14 position-right"></i></button>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-5">
+                                    <p class="mini_title">Block details  </p>
+                                    <ul class="media-list">
+                                       <li class="media">
+                                          <div class="media-left media-middle">
+                                             <a href="#" class="btn border-pink text-pink btn-flat btn-rounded btn-icon btn-xs"><i class="icon-statistics"></i></a>
+                                          </div>
+                                          <div class="media-body">
+                                             <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Emitter address</a>
+                                             <div class="text-size-small" ><span class="status-mark border-blue position-left"></span> <span id="M1" class='text-muted'>Waiting identification</span></div>
+                                          </div>
+                                       </li>
+                                       <li class="media">
+                                          <div class="media-left media-middle">
+                                             <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-xs"><i class="icon-alignment-unalign"></i></a>
+                                          </div>
+                                          <div class="media-body">
+                                             <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Block number</a>
+                                             <div class="text-size-small"><span class="status-mark border-blue position-left"></span>  <span id="M2" class='text-muted'>Waiting identification</span></div>
+                                          </div>
+                                       </li>
+                                       <li class="media">
+                                          <div class="media-left media-middle">
+                                             <a href="#" class="btn border-success text-success btn-flat btn-rounded btn-icon btn-xs"><i class="icon-checkmark3"></i></a>
+                                          </div>
+                                          <div class="media-body">
+                                             <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Description
+                                             <a>
+                                                <div class="text-size-small"><span class="status-mark border-blue position-left"></span> <span id="M3" class='text-muted'>Waiting identification</span></div>
+                                          </div>
+                                       </li>
+                                       <li class="media">
+                                       <div class="media-left media-middle">
+                                       <a href="#" class="btn border-warning-400 text-warning-400 btn-flat btn-rounded btn-icon btn-xs"><i class="icon-spinner11"></i></a>
+                                       </div>
+                                       <div class="media-body">
+                                       <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Time stamp</a>
+                                       <div class="text-size-small"><span class="status-mark border-blue position-left"></span>  <span id="M4" class='text-muted'>Waiting identification</span></div>
+                                       </div>
+                                       </li>												
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h6 class="panel-title">Crankshaft </h6>
+                           <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                        </div>
+						 <div class="panel-body">
+               <div class="row">
+                  <div class="col-md-12 col-md-offset-0">
+								<div id="tab1">
+					 </div>
+					 </div>					 
+					 </div>
+					 </div>
+                     </div>
+
+                  </div>
+                  <div class="col-md-6">
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <h6 class="panel-title">tension idler </h6>
+                           <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-12">
+                     <p>Motor ID to test: 0x1eea5236ea7c0b1bff65e9e1eea1ebd9f89485f49d04cf2e5984027a0d0a60c5</p>
+                     <!-- <textarea id="te" rows="1" cols="100"></textarea>-->
+                     <div class="col-lg-12">
+                        <p>Motor adresse: </p>
+                        <p id="adre">Pas d'adresse</p>
+                        <div class='row'>
+                           <div class="col-lg-12">
+                              <p>0</p>
+                              <pre id='e0' > </pre>
+                           </div>
+                           <div class="col-lg-12">
+                              <p>1</p>
+                              <pre id='e1' > </pre>
+                           </div>
+                           <div class="col-lg-12">
+                              <p>2</p>
+                              <pre id='e2' > </pre>
+                           </div>
+                           <p>3</p>
+                           <div class="col-lg-12">
+                              <pre id='e3' > </pre>
+                           </div>
+                           <p>4</p>
+                           <div class="col-lg-12">
+                              <pre id='e4' > </pre>
+                           </div>
+                           <div class="col-lg-12">
+                              <p>5</p>
+                              <pre id='e5' > </pre>
+                           </div>
+                           <div class="col-lg-12">
+                              <p>6</p>
+                              <pre id='e6' > </pre>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- /content area -->
+            </div>
+            <!-- /main content -->
+         </div>
+         <!-- /page content -->
+      </div>
+      <!-- /page container -->
+   </body>
+</html>

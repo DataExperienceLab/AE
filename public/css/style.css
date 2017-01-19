@@ -1,0 +1,103 @@
+
+.navbar-inverse {
+    border-bottom-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+pre{
+background-color:#000;
+color:#32faf0;
+font-family:"Courier New";
+}
+
+body{
+color:#fff;
+}
+
+.bgimg {
+    background-image: url('/images/Blur-4.jpg');
+    background-size: cover;
+}
+
+.sidebar {
+    background-color: rgba(0,0,0,0.1);
+    color: #fff;
+}
+.navigation > li.active > a, .navigation > li.active > a:hover, .navigation > li.active > a:focus {
+    background-color: #26A69A;
+    color: #fff;
+}
+
+
+
+.navigation > li.active > a, .navigation > li.active > a:hover, .navigation > li.active > a:focus {
+    background-color: rgb(254, 212, 2);
+    color: #fff;
+}
+
+.row {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    margin-bottom: 15px;
+}
+
+.has-feedback-left .form-control {
+    padding-right: 4px!important;
+     padding-left: 4px!important; 
+}
+
+.page-header-default {
+    background-color: rgba(0,0,0,0);
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 1px 0 0 #ddd;
+     box-shadow: 0 1px 0 0 #ddd; 
+}
+
+.panel {
+    margin-bottom: 20px;
+    border-color: rgba(0,0,0,0.2);
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.panel-default > .panel-heading {
+    color:  #fff;
+    background-color:  rgba(0,0,0,0);
+    border-color:  rgba(0,0,0,0);
+}
+
+.bg-trans{
+}
+
+.text-default, .text-default:hover, .text-default:focus {
+    color: #fff !important;
+}
+.bg-ey{
+background-color:rgb(254, 212, 2);
+ }
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.mini_title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #fff;
+}
+
+.btn-primary{
+    margin-bottom: 20px;
+}
+tr{
+margin-bottom:20px!important;
+}
