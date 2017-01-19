@@ -60,8 +60,12 @@ color:#fff;
      box-shadow: 0 1px 0 0 #ddd; 
 }
 
+.panel-body {
+    padding-bottom: 0px;
+}
+
 .panel {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-color: rgba(0,0,0,0.2);
     color: #ffffff;
     background-color: rgba(0,0,0,0.4);
@@ -135,4 +139,35 @@ border-color:#2196f3;
 
 .text-muted {
     color: #6bb4ef;
+}
+
+.thumbnail {
+    display: block;
+    padding: 3px;
+    margin-bottom: 20px;
+    line-height: 1.5384616;
+  background-color: rgba(0,0,0,0);
+    border: 0px solid  #2196f3;
+    border-radius: 3px;
+    -webkit-transition: border 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+/*    min-height:150px;
+    max-height:150px;*/
+    
+}
+
+.motorimg {
+    max-height: 180px;
+    width: auto!important;
+}
+
+.tbd {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #2196f3;
+    color:#fff;
+    width:90%
 }

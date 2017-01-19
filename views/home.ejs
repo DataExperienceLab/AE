@@ -18,6 +18,8 @@
       <script type="text/javascript" src="js/core/libraries/jquery.min.js"></script>
       <script type="text/javascript" src="js/core/libraries/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/plugins/loaders/blockui.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/ui/prism.min.js"></script>
+
       <!-- /core JS files -->
       <!-- Theme JS files -->
       <script type="text/javascript" src="js/plugins/visualization/d3/d3.min.js"></script>
@@ -28,6 +30,7 @@
       <script type="text/javascript" src="js/plugins/ui/moment/moment.min.js"></script>
       <script type="text/javascript" src="js/plugins/pickers/daterangepicker.js"></script>
       <script type="text/javascript" src="js/core/app.js"></script>
+	
       <link href="css/style.css" rel="stylesheet" type="text/css">
       <!-- /theme JS files -->
       <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
@@ -35,6 +38,58 @@
    <script>
       $(function() { 
       
+	  function sleep(miliseconds) {
+   var currentTime = new Date().getTime();
+
+   while (currentTime + miliseconds >= new Date().getTime()) {
+   }
+}
+
+
+	  
+	    $('#BUTTON1').on('click', function() {
+        $.blockUI({ 
+            message: '<p class="former">Searching for motor address using Web3</p><i class="icon-spinner4 spinner text-color-primary"></i>',
+            timeout: 1000, //unblock after 2 seconds
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+            css: {
+                border: 0,
+                color: '#fff',
+                padding: 0,
+                zIndex: 1201,
+                backgroundColor: 'transparent'
+            }
+        });
+
+	  });
+		  $('#BUTTON2').on('click', function() {
+        $.blockUI({ 
+            message: '<p class="former">Retrieving data using Web3</p><i class="icon-spinner4 spinner text-color-primary"></i>',
+            timeout: 1000, //unblock after 2 seconds
+            overlayCSS: {
+                backgroundColor: '#1b2024',
+                opacity: 0.8,
+                zIndex: 1200,
+                cursor: 'wait'
+            },
+			
+            css: {
+                border: 0,
+                color: '#fff',
+                padding: 0,
+                zIndex: 1201,
+                backgroundColor: 'transparent'
+            }
+        });
+    });
+	
+	
+	
       if($("#te").val()=="")
       {
       $("#BUTTON1").prop('disabled', true);
@@ -53,7 +108,7 @@
       socket.on('connection', function(){alert("Connected")});
       
       socket.on('ADRESSE', function(message) {
-      
+     sleep(3000)
       
       
       
@@ -73,8 +128,8 @@
       
       
       	socket.on('E0', function(message) {
-      
-	   $("#adre2").text("Callback function responded")
+           sleep(3000)
+      $("#adre2").text("Callback function responded")
       $("#adre_a2").removeClass("border-danger-800")
       $("#adre_a2").removeClass("text-danger-800")
       
@@ -84,8 +139,10 @@
        $("#adre_i2").removeClass("icon-cross2")
       $("#adre_i2").addClass("icon-checkmark3")
       
-      
-      
+      $("#notcher").css("display","none")
+      	
+       $("#imgmotor").attr("src","/images/Engine-Free-Download-PNG.png")
+      $("#imgmotor").fadeIn()
       var info=message[0]
       
       
@@ -290,19 +347,20 @@
                                     </div>
                                  </div>
                                  <div class="col-md-6">
-                                    <p class="mini_title">Block details  </p>
-                                    <div class='row'>
-                                       <div class="col-md-6">
+                                    <p class="mini_title">Motor details  </p>
+                                    <div class='row' style="padding-top:40px!important">
+                                       <div class="col-md-6 ">
                                           <ul class="media-list">
-                                             <li class="media">
+										       <li class="media">
                                                 <div class="media-left media-middle">
-                                                   <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-statistics"></i></a>
+                                                   <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-checkmark3"></i></a>
                                                 </div>
                                                 <div class="media-body">
-                                                   <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Emitter address</a>
-                                                   <div class="text-size-small" ><span id="M1" class='text-muted'>Waiting identification</span></div>
+                                                   <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Description
+                                                   <a>
+                                                      <div class="text-size-small"> <span id="M3" class='text-muted'>Waiting identification</span></div>
                                                 </div>
-                                             </li>
+                                            
                                              <li class="media">
                                                 <div class="media-left media-middle">
                                                    <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-xs"><i class="icon-alignment-unalign"></i></a>
@@ -312,19 +370,8 @@
                                                    <div class="text-size-small"> <span id="M2" class='text-muted'>Waiting identification</span></div>
                                                 </div>
                                              </li>
-                                          </ul>
-                                       </div>
-                                       <div class="col-md-6">
-                                          <ul class="media-list">
-                                             <li class="media">
-                                                <div class="media-left media-middle">
-                                                   <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-checkmark3"></i></a>
-                                                </div>
-                                                <div class="media-body">
-                                                   <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Description
-                                                   <a>
-                                                      <div class="text-size-small"> <span id="M3" class='text-muted'>Waiting identification</span></div>
-                                                </div>
+
+              
                                              </li>
                                              <li class="media">
                                              <div class="media-left media-middle">
@@ -334,9 +381,42 @@
                                              <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Time stamp</a>
                                              <div class="text-size-small">  <span id="M4" class='text-muted'>Waiting identification</span></div>
                                              </div>
-                                             </li>												
+                                             </li>		
+													<li class="media">
+                                                <div class="media-left media-middle">
+                                                   <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-statistics"></i></a>
+                                                </div>
+                                                <div class="media-body">
+                                                   <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Emitter address</a>
+                                                   <div class="text-size-small" ><span id="M1" class='text-muted'>Waiting identification</span></div>
+                                                </div>
+                                             </li>											 
                                           </ul>
                                        </div>
+                                       <div class="col-md-6">
+												<p class='tbd'>Motor visualization</p>
+												<center>
+									   												<i id="notcher" class="icon-spinner2 spinner text-color-primary" style="    margin-top: 80px;color: #2196f3;font-size: 40px"></i>
+												</center>
+                                                                             <div class="thumbnail">
+                                             <div class="thumb">
+                                                <img id='imgmotor' class='motorimg' style='display:none' src="" alt="">
+                                                <div class="caption-overflow">
+                                                   <span>
+                                                   <a href="#" data-popup="lightbox" rel="gallery" class="btn border-white text-white btn-flat btn-icon btn-rounded"><i class="icon-plus3"></i></a>
+                                                   <a href="#" class="btn border-white text-white btn-flat btn-icon btn-rounded ml-5"><i class="icon-link2"></i></a>
+                                                   </span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+									    <div class='row'>
+                                       <div class="col-md-8 col-md-offset-2">
+      
+                                       </div>
+                                    </div>
+									   
+									   
                                     </div>
                                  </div>
                               </div>
