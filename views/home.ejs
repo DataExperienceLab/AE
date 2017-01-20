@@ -97,7 +97,17 @@
       
       $("#te").on('keyup',function() {
        $("#BUTTON1").prop('disabled', false);
+    
+	      $("#adre0").text("Valid")
+		  
+	         $("#adre_a0").removeClass("border-danger-800")
+      $("#adre_a0").removeClass("text-danger-800")
       
+      $("#adre_a0").addClass("border-success")
+      $("#adre_a0").addClass("text-success")
+	  
+	         $("#adre_i0").removeClass("icon-cross2")
+      $("#adre_i0").addClass("icon-checkmark3")
       })
       
       
@@ -106,7 +116,7 @@
       socket.on('connection', function(){alert("Connected")});
       
       socket.on('ADRESSE', function(message) {
-      sleep(000)
+      sleep(3000)
       
       
       
@@ -126,7 +136,7 @@
       
       
       	socket.on('E0', function(message) {
-           sleep(000)
+           sleep(3000)
       $("#adre2").text("Callback function responded")
       $("#adre_a2").removeClass("border-danger-800")
       $("#adre_a2").removeClass("text-danger-800")
@@ -297,14 +307,25 @@
                                        </a> Enter motor ID  
                                     </p>
                                     <div class="row">
-                                       <div class="col-md-12">
+                                       <div class="col-md-6">
                                           <div class="input-group">
-                                             <span class="input-group-addon bg-slate-700"><i class="icon-lock2"></i></span>
-                                             <input type="text" id="te" class="form-control bg-slate" placeholder="Motor ID">
-                                             <span class="input-group-addon bg-slate-700"><i class="icon-help"></i></span>
+                                             <span class="input-group-addon bg-primary"><i class="icon-lock2"></i></span>
+                                             <input type="text" id="te" class="form-control bg-slate-800" placeholder="Motor ID">
+                                             <span class="input-group-addon bg-primary"><i class="icon-help"></i></span>
                                           </div>
                                        </div>
-                                       <hr>
+									        <div class="col-md-6">
+
+											  <div class="media-left media-middle">
+                                             <a id="adre_a0" href="#" class="btn border-danger-800 text-danger-800 btn-flat btn-rounded btn-icon btn-xs"><i id="adre_i0" class="icon-cross2"></i></a>
+                                          </div>
+                                          <div class="media-body">
+                                             <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Motor ID</a>
+                                             <div class="text-size-small" ><span id="adre0" class="text-muted">Waiting identification</span></div>
+                                          </div>
+											
+                                       </div>
+                                    
                                     </div>
                                     <p class="former"><a href="#" class="btn round btn-rounded btn-icon btn-xs">
                                        <span class="letter-icon">2</span>
