@@ -18,8 +18,7 @@
       <script type="text/javascript" src="js/core/libraries/jquery.min.js"></script>
       <script type="text/javascript" src="js/core/libraries/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/plugins/loaders/blockui.min.js"></script>
-	<script type="text/javascript" src="/js/plugins/ui/prism.min.js"></script>
-
+      <script type="text/javascript" src="/js/plugins/ui/prism.min.js"></script>
       <!-- /core JS files -->
       <!-- Theme JS files -->
       <script type="text/javascript" src="js/plugins/visualization/d3/d3.min.js"></script>
@@ -30,7 +29,6 @@
       <script type="text/javascript" src="js/plugins/ui/moment/moment.min.js"></script>
       <script type="text/javascript" src="js/plugins/pickers/daterangepicker.js"></script>
       <script type="text/javascript" src="js/core/app.js"></script>
-	
       <link href="css/style.css" rel="stylesheet" type="text/css">
       <!-- /theme JS files -->
       <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
@@ -38,16 +36,16 @@
    <script>
       $(function() { 
       
-	  function sleep(miliseconds) {
-   var currentTime = new Date().getTime();
-
-   while (currentTime + miliseconds >= new Date().getTime()) {
-   }
-}
-
-
-	  
-	    $('#BUTTON1').on('click', function() {
+      function sleep(miliseconds) {
+      var currentTime = new Date().getTime();
+      
+      while (currentTime + miliseconds >= new Date().getTime()) {
+      }
+      }
+      
+      
+      
+      $('#BUTTON1').on('click', function() {
         $.blockUI({ 
             message: '<p class="former">Searching for motor address using Web3</p><i class="icon-spinner4 spinner text-color-primary"></i>',
             timeout: 1000, //unblock after 2 seconds
@@ -65,9 +63,9 @@
                 backgroundColor: 'transparent'
             }
         });
-
-	  });
-		  $('#BUTTON2').on('click', function() {
+      
+      });
+      $('#BUTTON2').on('click', function() {
         $.blockUI({ 
             message: '<p class="former">Retrieving data using Web3</p><i class="icon-spinner4 spinner text-color-primary"></i>',
             timeout: 1000, //unblock after 2 seconds
@@ -77,7 +75,7 @@
                 zIndex: 1200,
                 cursor: 'wait'
             },
-			
+      
             css: {
                 border: 0,
                 color: '#fff',
@@ -86,10 +84,10 @@
                 backgroundColor: 'transparent'
             }
         });
-    });
-	
-	
-	
+      });
+      
+      
+      
       if($("#te").val()=="")
       {
       $("#BUTTON1").prop('disabled', true);
@@ -108,7 +106,7 @@
       socket.on('connection', function(){alert("Connected")});
       
       socket.on('ADRESSE', function(message) {
-     sleep(3000)
+      sleep(000)
       
       
       
@@ -128,7 +126,7 @@
       
       
       	socket.on('E0', function(message) {
-           sleep(3000)
+           sleep(000)
       $("#adre2").text("Callback function responded")
       $("#adre_a2").removeClass("border-danger-800")
       $("#adre_a2").removeClass("text-danger-800")
@@ -174,25 +172,26 @@
       console.log(message)
             $("#e3").text(JSON.stringify(message, undefined, 4));
       info=message
-      thead="<thead class='text-center'><tr><th class='text-center'>Details</th><th class='text-center'>Block number</th><th class='text-center'>Time stamp</th></tr></thead><tbody>"
+      thead="<thead class='text-center'><tr><th>Part</th><th>Block Hash</th><th>Address</th><th >Details</th><th class='text-center'>Block number</th><th class='text-center'>Time stamp</th></tr></thead><tbody cellspacing='15'>"
       tbody =""
       console.log(info.length)
       for(var i=0; i<info.length; i++) 
       
       { tbody=tbody+"<tr class='spacer'> "+
-      			"<td style='width:50%'>"+
-      			'<div class="media-left media-middle">'+
-      			'<a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs">'+
-      			'<span class="letter-icon">S</span>'+
-      			'</a>'+
-      			'</div>'+
-      			'<div class="media-body">'+
-      			'<div class="media-heading">'+
-      			'<a href="#" class="letter-icon-title">'+info[i].args.change+'</a>'+
-      			'</div>'+
-      			'<div class="text-muted text-size-small"><i class="icon-checkmark3 text-size-mini position-left"></i>'+info[i].event+'</div>'+
-      			'</div>'+
+	  	  				  "<td>"+
+      			'<span class="text-muted text-size-small">'+'Engine crankshaft'+'</span>'+
       			"</td>"+
+				"<td>"+
+      			'<span class="text-muted text-size-small">'+info[i].blockHash+'</span>'+
+      			"</td>"+
+	  				  "<td>"+
+      			'<span class="text-muted text-size-small">'+info[i].address+'</span>'+
+      			"</td>"+
+      			"<td style=''>"+
+				      			'<span class="text-muted text-size-small">'+info[i].args.change+'</span>'+
+
+      			"</td>"+
+
       			"<td>"+
       			'<span class="text-muted text-size-small">'+info[i].blockNumber+'</span>'+
       			"</td>"+
@@ -235,7 +234,7 @@
       });
        
    </script>
-   <body class="pace-done sidebar-xs bgimg">
+   <body class="pace-done bgimg">
       <!-- Main navbar -->
       <div class="navbar navbar-inverse">
          <div class="navbar-header">
@@ -269,8 +268,8 @@
                            </li >
                            <!-- Main -->
                            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Home"></i></li>
-                           <li class="active"><a href="index.html"><i class="icon-git-pull-request"></i> <span>Blockchain demo</span></a></li>
-                           <li ><a href="provider.html"><i class="icon-arrow-right16"></i> <span>Others</span></a></li>
+                           <li class="active"><a href="index.html"><i class="icon-git-pull-request"></i> <span>Engine traceability</span></a></li>
+                           <li ><a href="provider.html"><i class="icon-embed2"></i> <span>About</span></a></li>
                            <!-- /page kits -->
                         </ul>
                      </div>
@@ -282,10 +281,10 @@
             <!-- Main content -->
             <div class="content-wrapper">
                <div class="row">
-                  <div class="col-md-12">
+                  <div class="">
                      <div class="panel panel-default">
                         <div class="panel-heading">
-                           <h6 class="panel-title">Motor search engine</h6>
+                           <h6 class="panel-title">Blockchain technology to enable secure traceability</h6>
                            <a class="heading-elements-toggle"><i class="icon-more"></i></a>
                         </div>
                         <div class="panel-body">
@@ -327,7 +326,7 @@
                                     </div>
                                     <p class="former"><a href="#" class="btn round btn-rounded btn-icon btn-xs">
                                        <span class="letter-icon">3</span>
-                                       </a> Get back all details on this motor 
+                                       </a> Retrieve historical data 
                                     </p>
                                     <div class="input-group">
                                        <div class="row">
@@ -351,7 +350,7 @@
                                     <div class='row' style="padding-top:40px!important">
                                        <div class="col-md-6 ">
                                           <ul class="media-list">
-										       <li class="media">
+                                             <li class="media">
                                                 <div class="media-left media-middle">
                                                    <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-checkmark3"></i></a>
                                                 </div>
@@ -360,29 +359,26 @@
                                                    <a>
                                                       <div class="text-size-small"> <span id="M3" class='text-muted'>Waiting identification</span></div>
                                                 </div>
-                                            
-                                             <li class="media">
-                                                <div class="media-left media-middle">
-                                                   <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-xs"><i class="icon-alignment-unalign"></i></a>
-                                                </div>
-                                                <div class="media-body">
-                                                   <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Block number</a>
-                                                   <div class="text-size-small"> <span id="M2" class='text-muted'>Waiting identification</span></div>
-                                                </div>
-                                             </li>
-
-              
-                                             </li>
                                              <li class="media">
                                              <div class="media-left media-middle">
-                                             <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-spinner11"></i></a>
+                                             <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-xs"><i class="icon-alignment-unalign"></i></a>
                                              </div>
                                              <div class="media-body">
-                                             <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Time stamp</a>
-                                             <div class="text-size-small">  <span id="M4" class='text-muted'>Waiting identification</span></div>
+                                             <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Block number</a>
+                                             <div class="text-size-small"> <span id="M2" class='text-muted'>Waiting identification</span></div>
                                              </div>
-                                             </li>		
-													<li class="media">
+                                             </li>
+                                             </li>
+                                             <li class="media">
+                                                <div class="media-left media-middle">
+                                                   <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-spinner11"></i></a>
+                                                </div>
+                                                <div class="media-body">
+                                                   <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Time stamp</a>
+                                                   <div class="text-size-small">  <span id="M4" class='text-muted'>Waiting identification</span></div>
+                                                </div>
+                                             </li>
+                                             <li class="media">
                                                 <div class="media-left media-middle">
                                                    <a href="#" class="btn border-primary text-primary  btn-flat btn-rounded btn-icon btn-xs"><i class="icon-statistics"></i></a>
                                                 </div>
@@ -390,15 +386,15 @@
                                                    <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Emitter address</a>
                                                    <div class="text-size-small" ><span id="M1" class='text-muted'>Waiting identification</span></div>
                                                 </div>
-                                             </li>											 
+                                             </li>
                                           </ul>
                                        </div>
                                        <div class="col-md-6">
-												<p class='tbd'>Motor visualization</p>
-												<center>
-									   												<i id="notcher" class="icon-spinner2 spinner text-color-primary" style="    margin-top: 80px;color: #2196f3;font-size: 40px"></i>
-												</center>
-                                                                             <div class="thumbnail">
+                                          <p class='tbd'>Motor visualization</p>
+                                          <center>
+                                             <i id="notcher" class="icon-spinner2 spinner text-color-primary" style="    margin-top: 80px;color: #2196f3;font-size: 40px"></i>
+                                          </center>
+                                          <div class="thumbnail">
                                              <div class="thumb">
                                                 <img id='imgmotor' class='motorimg' style='display:none' src="" alt="">
                                                 <div class="caption-overflow">
@@ -410,86 +406,34 @@
                                              </div>
                                           </div>
                                        </div>
-									    <div class='row'>
-                                       <div class="col-md-8 col-md-offset-2">
-      
+                                       <div class='row'>
+                                          <div class="col-md-8 col-md-offset-2">
+                                          </div>
                                        </div>
                                     </div>
-									   
-									   
-                                    </div>
                                  </div>
                               </div>
                            </div>
+						   						<div class="row">
+							<div class="col-md-12">
+								 <p class="mini_title">Events log details </p>
+								     <div >
+									<center> <table id="tab1" class='table' cellspacing="40"></table></center>
+							</div>
+						</div>		
                         </div>
+				
+						
+						
+						
+						
+						
+						
+						
                      </div>
                   </div>
                </div>
-               <div class="row">
-                  <div class="col-md-6">
-                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                           <h6 class="panel-title">Crankshaft </h6>
-                           <a class="heading-elements-toggle"><i class="icon-more"></i></a>
-                        </div>
-                        <div class="panel-body">
-                           <div class="row">
-                              <div class="col-md-12 col-md-offset-0">
-                                 <div id="tab1">
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-6">
-                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                           <h6 class="panel-title">tension idler </h6>
-                           <a class="heading-elements-toggle"><i class="icon-more"></i></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-lg-12">
-                     <p>Motor ID to test: 0x1eea5236ea7c0b1bff65e9e1eea1ebd9f89485f49d04cf2e5984027a0d0a60c5</p>
-                     <!-- <textarea id="te" rows="1" cols="100"></textarea>-->
-                     <div class="col-lg-12">
-                        <p>Motor adresse: </p>
-                        <p id="adre">Pas d'adresse</p>
-                        <div class='row'>
-                           <div class="col-lg-12">
-                              <p>0</p>
-                              <pre id='e0' > </pre>
-                           </div>
-                           <div class="col-lg-12">
-                              <p>1</p>
-                              <pre id='e1' > </pre>
-                           </div>
-                           <div class="col-lg-12">
-                              <p>2</p>
-                              <pre id='e2' > </pre>
-                           </div>
-                           <p>3</p>
-                           <div class="col-lg-12">
-                              <pre id='e3' > </pre>
-                           </div>
-                           <p>4</p>
-                           <div class="col-lg-12">
-                              <pre id='e4' > </pre>
-                           </div>
-                           <div class="col-lg-12">
-                              <p>5</p>
-                              <pre id='e5' > </pre>
-                           </div>
-                           <div class="col-lg-12">
-                              <p>6</p>
-                              <pre id='e6' > </pre>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+
                </div>
                <!-- /content area -->
             </div>

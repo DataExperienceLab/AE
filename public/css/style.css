@@ -1,8 +1,14 @@
-
+/*
 .navbar-inverse {
     border-bottom-color: rgba(0, 0, 0, 0);
     color: #fff;
     background-color: rgba(0, 0, 0, 0.1);
+}
+*/
+.navbar-inverse {
+    border-bottom-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 pre{
@@ -19,9 +25,14 @@ color:#fff;
     background-image: url('/images/Blur-4.jpg');
     background-size: cover;
 }
-
+/*
 .sidebar {
     background-color: rgba(0,0,0,0.1);
+    color: #fff;
+}
+*/
+.sidebar {
+    background-color: rgba(0,0,0,0.4);
     color: #fff;
 }
 .navigation > li.active > a, .navigation > li.active > a:hover, .navigation > li.active > a:focus {
@@ -35,12 +46,16 @@ color:#fff;
     background-color: rgb(254, 212, 2);
     color: #fff;
 }
-
+/*
 .row {
     margin-left: 10px;
     margin-right: 10px;
 }
-
+*/
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
 .input-group {
     position: relative;
     display: table;
@@ -63,12 +78,18 @@ color:#fff;
 .panel-body {
     padding-bottom: 0px;
 }
-
+/*
+.row {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+*/
 .panel {
     margin-bottom: 10px;
-    border-color: rgba(0,0,0,0.2);
+    border-color: rgba(0,0,0,0);
     color: #ffffff;
     background-color: rgba(0,0,0,0.4);
+    min-height:1000px;
 }
 
 .panel-default > .panel-heading {
@@ -163,11 +184,17 @@ border-color:#2196f3;
 }
 
 .tbd {
-    text-align: right;
+    text-align: center;
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 20px;
     border-bottom: 1px solid #2196f3;
     color:#fff;
     width:90%
+}
+
+h6.panel-title, .h6.panel-title {
+    font-size: 17px;
+    color: #2196f3;
+    font-weight: 800;
 }
