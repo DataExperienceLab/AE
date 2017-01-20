@@ -116,7 +116,7 @@
       socket.on('connection', function(){alert("Connected")});
       
       socket.on('ADRESSE', function(message) {
-      sleep(3000)
+      sleep(000)
       
       
       
@@ -136,7 +136,7 @@
       
       
       	socket.on('E0', function(message) {
-           sleep(3000)
+           sleep(000)
       $("#adre2").text("Callback function responded")
       $("#adre_a2").removeClass("border-danger-800")
       $("#adre_a2").removeClass("text-danger-800")
@@ -182,31 +182,33 @@
       console.log(message)
             $("#e3").text(JSON.stringify(message, undefined, 4));
       info=message
-      thead="<thead class='text-center'><tr><th>Part</th><th>Block Hash</th><th>Address</th><th >Details</th><th class='text-center'>Block number</th><th class='text-center'>Time stamp</th></tr></thead><tbody cellspacing='15'>"
+	  $("#tab0").css("display","none")
+      thead="<thead class='text-center'><tr><th><center>Part</center></th><th><center>Block Hash</center></th><th><center>Address</center></th><th ><center>Details</center></th><th><center>Block number</center></th><th><center>Time stamp</center></th></tr></thead><tbody cellspacing='15'>"
       tbody =""
-      console.log(info.length)
+      console.log(info)
+	        var timee=["20/11/2016 23:00","06/12/2016 11:14"]
       for(var i=0; i<info.length; i++) 
-      
+
       { tbody=tbody+"<tr class='spacer'> "+
 	  	  				  "<td>"+
-      			'<span class="text-muted text-size-small">'+'Engine crankshaft'+'</span>'+
+      			'<span class="text-muted c1 text-size-small">'+'Engine crankshaft'+'</span>'+
       			"</td>"+
 				"<td>"+
-      			'<span class="text-muted text-size-small">'+info[i].blockHash+'</span>'+
+      			'<span class="text-muted c2 text-size-small">'+info[i].blockHash+'</span>'+
       			"</td>"+
 	  				  "<td>"+
-      			'<span class="text-muted text-size-small">'+info[i].address+'</span>'+
+      			'<span class="text-muted c3 text-size-small">'+info[i].address+'</span>'+
       			"</td>"+
       			"<td style=''>"+
-				      			'<span class="text-muted text-size-small">'+info[i].args.change+'</span>'+
+				  '<span class="text-muted c4 text-size-small">'+info[i].args.change+'</span>'+
 
       			"</td>"+
 
       			"<td>"+
-      			'<span class="text-muted text-size-small">'+info[i].blockNumber+'</span>'+
+      			'<span class="text-muted c5 text-size-small">'+info[i].blockNumber+'</span>'+
       			"</td>"+
       			"<td>"+
-      			'<span class="text-muted text-size-small">19/11/2016 14:00</span>'+
+      			'<span class="text-muted c6 text-size-small">'+timee[i]+'</span>'+
       			"</td>"+							
       			+"</tr>" }
       			
@@ -440,6 +442,36 @@
 								 <p class="mini_title">Events log details </p>
 								     <div >
 									<center> <table id="tab1" class='table' cellspacing="40"></table></center>
+									<center> <table id="tab0" class='table' cellspacing="40">
+									
+									<center><thead class='text-center'><tr><th><center>Part</center></th><th><center>Block Hash</center></th><th><center>Address</center></th><th ><center>Details</center></th><th class='text-center'><center>Block number</center></th><th class='text-center'><center>Time stamp</center></th></tr></thead><tbody cellspacing='15'>
+									</center><tr>
+										<td class='text-muted2'>
+										<center>	Identification needed<br>
+										<i class='eicon-spinner spinner'></i></center>
+										</td>		
+										<td class='text-muted2'>
+										<center>	Identification needed<br>
+										<i class='eicon-spinner spinner'></i></center>
+										</td>		
+										<td class='text-muted2'>
+										<center>	Identification needed<br>
+										<i class='eicon-spinner spinner'></i></center>
+										</td>			
+										<td class='text-muted2'>
+										<center>	Identification needed<br>
+										<i class='eicon-spinner spinner'></i></center>
+										</td>		
+										<td class='text-muted2'>
+										<center>	Identification needed<br>
+										<i class='eicon-spinner spinner'></i></center>
+										</td>		
+										<td class='text-muted2'>
+										<center>	Identification needed<br>
+										<i class='eicon-spinner spinner'></i></center>
+										</td>											
+									</tr>									
+									</table></center>
 							</div>
 						</div>		
                         </div>
